@@ -29,6 +29,7 @@ const createOrder = async (req, res) => {
   }
 }
 
+
 const getMyOrders = async (req, res) => {
   try {
     const orders = await Order.find({ user: req.user._id })
@@ -76,9 +77,19 @@ const updateOrderToDelivered = async (req, res) => {
 }
 
 
+const getAllOrders = async (req, res) => {
+  try {
+    const orders = await Order.find({}).populate('user', 'name email')
+    res.json(orders)
+  } catch (error) {
+    res.status(500).json({ message: error.message })
+  }
+}
+
 export {
   createOrder,
   getMyOrders,
   getOrderById,
-  updateOrderToDelivered
+  updateOrderToDelivered,
+  getAllOrders,
 }
