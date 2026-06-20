@@ -15,7 +15,12 @@ connectDB()
 const app = express()
 
 // middlewares
-app.use(cors())
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://shopzone-frontend.vercel.app'
+  ]
+}))
 app.use(express.json())
 
 // routes
