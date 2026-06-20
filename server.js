@@ -17,7 +17,8 @@ const app = express()
 // middlewares
 app.use(cors({
   origin: [
-    'https://shopzone-frontend.vercel.app'
+    'http://localhost:5173',
+    'https://shop-zone-ecomm.vercel.app'
   ]
 }))
 app.use(express.json())
